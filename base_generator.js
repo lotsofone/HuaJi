@@ -369,5 +369,5 @@ base_generator.level = function(i){
     return base_objects;
 }
 
-base_generator.debug_offset = [1100, -1500];
-//base_generator.debug_offset = [0, 0];
+//base_generator.debug_offset = [1100, -1500];
+base_generator.debug_offset = [0, 0];
