@@ -15,7 +15,6 @@ async function startMatch(){
 
 		console.log("匹配中");
 		connection_manager.setDistributionFunction("match_success", function(msg){
-			connection_manager.server_socket.close();
 			connection_manager.setDistributionFunction("match_success", null);
 			console.log("匹配成功");
 			connection_manager.startPeerConnection(msg.whohost=="youhost");
@@ -28,6 +27,10 @@ async function startMatch(){
 					if(connection_manager.peerConnection.iceConnectionState=="disconnected"){
 						console.log("连接已中断");
 						connection_manager.peerConnection.oniceconnectionstatechange = function(){};
+					}
+					else if(connection_manager.peerConnection.iceConnectionState=="complete"){
+						connection_manager.server_socket.close();
+						console.log("close socket");
 					}
 				}
 			}
