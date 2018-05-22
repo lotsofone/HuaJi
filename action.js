@@ -1,5 +1,5 @@
 
-async function startMatch(){
+function startMatch(){
 	if(game.whohost=="youhost"||game.whohost=="hehost"||game.whohost=="local"){
 		document.getElementById("game_status").innerHTML = "进行在线游戏之前必须停止正在进行的游戏";
 		return;
@@ -28,10 +28,13 @@ async function startMatch(){
 						console.log("连接已中断");
 						connection_manager.peerConnection.oniceconnectionstatechange = function(){};
 					}
-					else if(connection_manager.peerConnection.iceConnectionState=="complete"){
-						connection_manager.server_socket.close();
-						console.log("close socket");
-					}
+				}
+			}
+			connection_manager.peerConnection.oniceconnectionstatechange = function(){
+				console.log("peerConnection iceConnectionState "+connection_manager.peerConnection.iceConnectionState);
+				if(connection_manager.peerConnection.iceConnectionState=="completed"){
+					connection_manager.server_socket.close();
+					console.log("close socket");
 				}
 			}
 			connection_manager.dataChannel.onerror = function(e){
