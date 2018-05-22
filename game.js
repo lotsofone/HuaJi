@@ -149,7 +149,7 @@ game.render = function(time){
             }
             else if(pack.tag=="success"){
                 game.stopGame();
-                document.getElementById("success").style.opacity=0.5;
+                document.getElementById("success").style.visibility = "visible";
 
                 //end here---------------------------------------------
             }
@@ -344,7 +344,8 @@ game.setRule = function(){
         if(game.base_objects[3].body.value<0)game.base_objects[3].body.value=0;
         if(game.base_objects[2].body.value>=1&&game.base_objects[3].body.value>=1){
             game.renderCache.addPack({tag:"success", tickStamp:game.tickStamp})
-            connection_manager.dataChannel.send(JSON.stringify({tag:"success", tickStamp:game.tickStamp}));
+            if(game.whohost=="youhost")
+                connection_manager.dataChannel.send(JSON.stringify({tag:"success", tickStamp:game.tickStamp}));
         }
         if(game.base_objects[2].body.value>1)game.base_objects[2].body.value=1;
         if(game.base_objects[3].body.value>1)game.base_objects[3].body.value=1;

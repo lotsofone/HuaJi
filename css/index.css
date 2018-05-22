@@ -26,7 +26,24 @@ body{
     z-index: 100;
     top:50%;
     left:50%;
-    font-size: 80;
+    font-size: 36;
     transform: translate(-50%, -50%);
-    opacity: 0;
+    visibility: hidden;
+}
+#sm{
+    position: absolute;
+    z-index: 100;
+    top:50%;
+    left:40%;
+    font-size: 24;
+    transform: translate(-50%, -50%);
+    visibility: visible;
+}
+#sl{
+    position: absolute;
+    z-index: 100;
+    top:50%;
+    left:60%;
+    font-size: 24;
+    transform: translate(-50%, -50%);
 }

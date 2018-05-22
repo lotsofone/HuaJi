@@ -103,6 +103,7 @@ base_generator.destoryGraphics = function(base_objects){
         base_objects[i].element = null;
     }
     base_generator.camObjects = null;
+    base_generator.scene_div.innerHTML = "";
 }
 base_generator.render = function(base_objects){
     base_generator.scene_div.style.top = -base_generator.currentCamare[1]*base_generator.render_scale;
@@ -369,5 +370,5 @@ base_generator.level = function(i){
     return base_objects;
 }
 
-//base_generator.debug_offset = [1100, -1500];
+//base_generator.debug_offset = [1000, -1500];
 base_generator.debug_offset = [0, 0];
